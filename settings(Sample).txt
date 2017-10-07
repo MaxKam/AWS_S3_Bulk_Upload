@@ -1,0 +1,5 @@
+[DEFAULT]
+folder_path = #The path to the files you want to upload
+bucket_name = #The AWS S3 bucket name that you want to upload to 
+s3_path = #This will get prepended to the filename to create the illusion of
+           the file being in some sub directory
