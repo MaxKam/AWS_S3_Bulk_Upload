@@ -1,8 +1,8 @@
 import os
-import ConfigParser
+import configparser
 from s3Upload import s3Uploader
 
-config = ConfigParser.ConfigParser()
+config = configparser.ConfigParser()
 config.read("settings.txt")
 
 folder_path = config.get("DEFAULT", "folder_path")
