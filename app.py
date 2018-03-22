@@ -18,11 +18,15 @@ def list_files(dir):
             file_list.append(os.path.join(root, name))
     return file_list
 
+def upload_files(file_list):
+    for file_item in file_list:
+        file_name = file_item.rsplit("\\", 2) # Gets file name and parent directory from full path
+        file_name = file_name[1] + "/" + file_name[2]
+        awsS3.uploadS3(file_name, file_item, bucket_name)
 
-file_list = list_files(folder_path)
+def main():
+    file_list = list_files(folder_path)
+    upload_files(file_list)
 
-for file_item in file_list:
-    file_name = file_item.rsplit("\\", 2) # Gets file name and parent directory from full path
-    file_name = file_name[1] + "/" + file_name[2]
-    awsS3.uploadS3(file_name, file_item, bucket_name)
-
+if __name__ == "__main__":
+    main()
