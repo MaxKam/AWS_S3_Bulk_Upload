@@ -1,6 +1,6 @@
 import os
 import configparser
-from s3Upload import s3Uploader
+from s3_upload import s3Uploader
 
 config = configparser.ConfigParser()
 config.read("settings.txt")
