@@ -1,6 +1,8 @@
 language: python
 python:
   - "3.6"
+before_install:
+  - mv settings(Sample).txt settings.txt
 # command to install dependencies
 install:
   - pip install -r requirements.txt
