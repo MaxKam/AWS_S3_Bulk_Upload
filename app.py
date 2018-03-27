@@ -20,9 +20,14 @@ def list_files(dir):
 
 def upload_files(file_list):
     for file_item in file_list:
-        file_name = file_item.rsplit("\\", 2) # Gets file name and parent directory from full path
-        file_name = file_name[1] + "/" + file_name[2]
-        awsS3.uploadS3(file_name, file_item, bucket_name)
+        try:
+            file_name = file_item.rsplit("\\", 2) # Gets file name and parent directory from full path
+            file_name = file_name[1] + "/" + file_name[2]
+            awsS3.uploadS3(file_name, file_item, bucket_name)
+        except Exception as error_message:
+            error_file = open("aws_upload_errors.txt","a+")
+            error_file.write('%s: \n %s \n' % (file_item, error_message))
+            error_file.close()
 
 def main():
     file_list = list_files(folder_path)
