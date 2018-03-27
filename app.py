@@ -1,5 +1,6 @@
 import os
 import configparser
+from datetime import datetime
 from s3_upload import s3Uploader
 
 config = configparser.ConfigParser()
@@ -26,7 +27,8 @@ def upload_files(file_list):
             awsS3.uploadS3(file_name, file_item, bucket_name)
         except Exception as error_message:
             error_file = open("aws_upload_errors.txt","a+")
-            error_file.write('%s: \n %s \n' % (file_item, error_message))
+            current_time = datetime.now().isoformat('_', timespec='seconds')
+            error_file.write('%s -- %s: \n %s \n' % (current_time, file_item, error_message))
             error_file.close()
 
 def main():
