@@ -4,7 +4,7 @@ from datetime import datetime
 from s3_upload import s3Uploader
 
 config = configparser.ConfigParser()
-config.read("settings.txt")
+config.read("settings.ini")
 
 folder_path = config.get("DEFAULT", "folder_path")
 bucket_name = config.get("DEFAULT", "bucket_name")
