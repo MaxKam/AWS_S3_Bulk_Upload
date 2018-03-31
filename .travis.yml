@@ -3,6 +3,9 @@ python:
   - "3.6"
 before_install:
   - mv settings_sample.ini settings.ini
+  - mkdir test_media
+  - touch ./test_media/test.json
+  - touch ./test_media/test.txt
 # command to install dependencies
 install:
   - pip install -r requirements.txt
